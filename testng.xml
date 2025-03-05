@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TestSuite" parallel="methods" thread-count="3">
+    <test name="User API Tests">
+        <classes>
+            <class name="com.restassured.tests.UserTests"/>
+            <class name="com.restassured.tests.RegisterTests"/>
+        </classes>
+    </test>
+</suite>
