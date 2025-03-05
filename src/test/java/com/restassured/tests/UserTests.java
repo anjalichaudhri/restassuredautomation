@@ -10,6 +10,9 @@ import com.restassured.clients.UserClient;
 import com.restassured.models.User;
 import com.restassured.utils.LoggerUtil;
 
+import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 
 public class UserTests extends BaseTest {
@@ -26,5 +29,19 @@ public class UserTests extends BaseTest {
         Assert.assertEquals(response.getStatusCode(), 201);
         LoggerUtil.logger.info("Test Passed: User Created Successfully!");
 
+    }
+
+    @Test
+    @Feature("User API")
+    @Description("Test to create a user")
+    public void testCreateUserAllure() {
+        Allure.step("Creating user payload");
+        User user = new User("John", "Engineer");
+
+        Allure.step("Sending API request to create user");
+        Response response = UserClient.createUser(user);
+
+        Allure.step("Validating response");
+        Assert.assertEquals(response.getStatusCode(), 201);
     }
 }
