@@ -1,0 +1,33 @@
+name: API Test Automation
+
+# on: [push, pull_request] By default, GitHub Actions runs on all branches when you specify on: [push, pull_request].
+
+on:
+    push:
+        branches:
+            - master # Runs when code is pushed to the 'master' branch
+            - main   # Runs when code is pushed to the 'master' branch
+    pull_request:
+        branches:
+            - main #runs when a PR is made to the main branch
+            - master #runs when a pr is made to the master branch
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+
+            - name: Set Up Java
+              uses: actions/setup-java@v3
+              with:
+                distribution: 'temurin'
+                java-version: '21'
+
+            - name: Install Maven Dependencies
+              run: mvn clean install
+
+            - name: Run API Tests
+              run: mvn test
