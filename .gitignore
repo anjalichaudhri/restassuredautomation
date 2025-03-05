@@ -1,0 +1,21 @@
+# Maven target directory
+target/
+
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+
+# VS Code settings
+.vscode/
+
+# Logs and test reports
+logs/
+allure-results/
+test-output/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Credentials (if any)
+config.properties
